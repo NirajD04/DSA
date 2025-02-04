@@ -2,7 +2,7 @@ class Solution {
 public:
 
 
-int findPivot(vector<int>& nums) {
+    int findPivot(vector<int>& nums) {
         int low = 0, high = nums.size() - 1;
 
         while (low < high) {
@@ -47,6 +47,7 @@ int findPivot(vector<int>& nums) {
         }
     }
 };
+
 //     int search(vector<int>& nums, int target) {
 //         // int n=nums.size();
 //         // int low=0;
