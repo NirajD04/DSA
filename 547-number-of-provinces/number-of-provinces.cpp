@@ -1,38 +1,42 @@
 class Solution {
 public:
-//  void dfs(unordered_map<int, vector<int>> &adj, int u, vector<bool>& visited) {
+
+//   void bfs(unordered_map<int, vector<int>>& adj, int u, vector<bool>& visited) {
+//         queue<int> que;
+//         que.push(u);
 //         visited[u] = true;
         
-//         //Visit neighbours
-//         for(int &v : adj[u]) {
-//             if(!visited[v]) {
-//                 dfs(adj, v, visited);
-//             }
+//         while(!que.empty()) {
+//             int u = que.front();
+//             que.pop();
+            
+//            //Visit neighbours
+//             for(int &v : adj[u]) {
+//                 if(!visited[v]) {
+//                     visited[v] = true;
+//                     que.push(v);
+//                 }
+//             } 
 //         }
 //     }
-  void bfs(unordered_map<int, vector<int>>& adj, int u, vector<bool>& visited) {
-        queue<int> que;
-        que.push(u);
+ void dfs(unordered_map<int, vector<int>> &adj, int u, vector<bool>& visited) {
         visited[u] = true;
         
-        while(!que.empty()) {
-            int u = que.front();
-            que.pop();
-            
-           //Visit neighbours
-            for(int &v : adj[u]) {
-                if(!visited[v]) {
-                    visited[v] = true;
-                    que.push(v);
-                }
-            } 
+        //Visit neighbours
+        for(int &v : adj[u]) {
+            if(!visited[v]) {
+                dfs(adj, v, visited);
+            }
         }
     }
+
+
     int findCircleNum(vector<vector<int>>& isConnected) {
-          int n = isConnected.size();
+        int n = isConnected.size();
         
         unordered_map<int, vector<int>> adj;
         
+        //adjanceny list bana lo
         for(int i = 0; i<n; i++) {
             for(int j = 0; j<n; j++) {
                 if(isConnected[i][j] == 1) {
@@ -48,7 +52,7 @@ public:
         for(int i = 0; i<n; i++) {
             if(!visited[i]) {
                 count++;
-                bfs(adj, i, visited);
+                dfs(adj, i, visited);
             }
         }
         
