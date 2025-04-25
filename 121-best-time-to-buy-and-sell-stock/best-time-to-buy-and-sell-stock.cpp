@@ -7,7 +7,7 @@ public:
 
         int profit=0;
         
-        for(int i=1; i< p.size();i++){
+        for(int i=0; i< p.size();i++){
 
             int cost=p[i]-minimal;
 
