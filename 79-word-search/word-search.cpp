@@ -9,7 +9,7 @@ public:
         if (idx == word.length()) {
             return true;
         }
-        
+
         if (i < 0 || j < 0 || i >= m || j >= n || board[i][j] != word[idx]) {
             return false;
         }
