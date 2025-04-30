@@ -4,7 +4,7 @@ public:
     vector<vector<int>> direction{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     bool find(vector<vector<char>>& board, int i, int j, int idx,
-              const string& word) {
+               string& word) {
 
         if (idx == word.length()) {
             return true;
@@ -32,7 +32,7 @@ public:
         return false;
     }
 
-    bool exist(vector<vector<char>>& board, const string& word) {
+    bool exist(vector<vector<char>>& board,  string& word) {
         m = board.size();
         n = board[0].size();
 
