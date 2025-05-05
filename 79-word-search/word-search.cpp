@@ -1,6 +1,7 @@
 class Solution {
 public:
     int m, n;
+    
     vector<vector<int>> direction{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
     bool find(vector<vector<char>>& board, int i, int j, int idx,
