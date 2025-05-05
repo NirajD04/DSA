@@ -37,7 +37,9 @@ public:
         n = board[0].size();
 
         for (int i = 0; i < m; i++) {
+
             for (int j = 0; j < n; j++) {
+               
                 if (board[i][j] == word[0] && find(board, i, j, 0, word)) {
                     return true;
                 }
