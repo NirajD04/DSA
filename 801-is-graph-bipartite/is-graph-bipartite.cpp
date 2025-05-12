@@ -1,38 +1,31 @@
 class Solution {
 public:
-    bool DFS(vector<vector<int>>& graph, int& curr, vector<int>& color,
-             int curentcolor) {
+    bool dfs(int node, vector<vector<int>>& graph, vector<int>& color, int currentcolor) {
+        color[node] = currentcolor;
 
-        color[curr] = curentcolor;
-
-        for (int& neighbour : graph[curr]) {
-            if (color[neighbour] == -1) {
-                if (!DFS(graph, neighbour, color, 1 - curentcolor)) {
-                    return false;
-                } 
-            }
-            else if (color[neighbour] ==
-                           color[curr]) { // Conflict detected
-                    return false;
+        for (int& v : graph[node]) {
+            if (color[v] == color[node]) {
+                return false;
             }
 
+            if (color[v] == -1) {
+                if (!dfs(v, graph, color, 1 - currentcolor)) {
+                    return false;
+                }
+            }
         }
         return true;
     }
 
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
-
-        vector<int> color(n, -1); // similar as visited
+        vector<int> color(n, -1);
 
         for (int i = 0; i < n; i++) {
-
             if (color[i] == -1) {
-
-                if (DFS(graph, i, color, 1) == false) {
+                if (!dfs(i, graph, color, 1)) {
                     return false;
                 }
-            
             }
         }
         return true;
