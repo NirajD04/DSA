@@ -27,26 +27,25 @@ public:
     int makeConnected(int n, vector<vector<int>>& connections) {
 
         int m = connections.size();
+
         parent.resize(n);
         rank.resize(n, 0);
-
-    
 
         if (m < n - 1) {
             return -1;
         }
-
-        for (int i = 0; i < n; ++i) parent[i] = i;
-
-        int components = n;
-
-        for (auto& v : connections) {
-            if (find(v[0]) != find(v[1])) {
-                Union(v[0], v[1]);
-                components--;
+        
+        for (int i = 0; i < n; ++i) {
+            parent[i] = i;
+        }int components = n;
+            for (auto& v : connections) {
+                if (find(v[0]) != find(v[1])) {
+                    Union(v[0], v[1]);
+                    components--;
+                }
             }
-        }
+        
 
-        return components - 1; 
+        return components - 1;
     }
 };
