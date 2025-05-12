@@ -34,12 +34,13 @@ public:
                 }
             }
         }
-        int maxDelay = 0;
-        for (int i = 1; i <= n; i++) {
-            if (result[i] == INT_MAX)
-                return -1;
-            maxDelay = max(maxDelay, result[i]);
+        int maxdelay=0;
+        for(int i=1; i<=n; i++){
+            if(result[i]==INT_MAX) return -1;
+            if(result[i] > maxdelay){
+                maxdelay=result[i];
+            }
         }
-        return maxDelay;
+        return maxdelay;
     }
 };
