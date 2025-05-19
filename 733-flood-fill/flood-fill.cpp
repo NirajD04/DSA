@@ -1,27 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> direction{{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+    int m, n;
+    vector<vector<int>> direction{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
-    void dfs(vector<vector<int>>& ans, int row, int col, int intialcolor,
+    void dfs(vector<vector<int>>& ans, int r, int c, int intialcolor,
              int color) {
-
-        if (row < 0 || row >= ans.size() || col < 0 || col >= ans[0].size() ||
-            ans[row][col] != intialcolor)
+        if (r < 0 || r >= m || c < 0 || c >= n || ans[r][c] != intialcolor)
             return;
 
-        ans[row][col] = color;
+        ans[r][c] = color;
 
         for (auto dir : direction) {
-            int new_row = row + dir[0];
-            int new_col = col + dir[1];
-
-            dfs(ans, new_row, new_col, intialcolor, color);
+            int x = r + dir[0];
+            int y = c + dir[1];
+            dfs(ans, x, y, intialcolor, color);
         }
     }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc,
                                   int color) {
-
         vector<vector<int>> ans = image;
+
+        m = ans.size();
+        n = ans[0].size();
+
         int intialcolor = ans[sr][sc];
 
         if (intialcolor != color) {
