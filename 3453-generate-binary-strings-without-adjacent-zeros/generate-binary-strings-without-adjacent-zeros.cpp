@@ -3,7 +3,6 @@ public:
     vector<string> ans;
 
     void solve(int n, string curr) {
-
         if (curr.length() == n) {
             ans.push_back(curr);
             return;
@@ -11,7 +10,6 @@ public:
 
         solve(n, curr + '1');
 
-    
         if (curr.empty() || curr.back() != '0') {
             solve(n, curr + '0');
         }
