@@ -3,10 +3,10 @@ public:
     int longestOnes(vector<int>& nums, int k) {
         int l = 0;
         int r = 0;
-        int len = 0;
+        int maxlen = 0;
         int zero = 0;
-
-        while (r < nums.size()) {
+        int n = nums.size();
+        while (r < n) {
             if (nums[r] == 0) {
                 zero++;
             }
@@ -18,9 +18,9 @@ public:
                 l++;
             }
 
-            len = max(len, r - l + 1);
+            maxlen = max(maxlen, r - l + 1);
             r++;
         }
-        return len;
+        return maxlen;
     }
 };
