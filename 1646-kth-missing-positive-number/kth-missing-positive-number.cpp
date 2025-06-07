@@ -1,22 +1,22 @@
 class Solution {
 public:
     int findKthPositive(vector<int>& arr, int k) {
-        int idx=0;
-        int count=0;
-        int i=1;
-        while(true){
-            if(idx < arr.size() && arr[idx]==i  ){
-                idx++;
+        int l=0;
+        int r=arr.size()-1;
+
+       
+        while(l<=r){
+            int mid  = l +(r-l)/2;
+
+            int kitne_missing= arr[mid]- (mid+1);
+
+            if(kitne_missing< k){
+                l= mid+1;
             }
             else{
-                count++;
+                r=mid-1;
             }
-            if(count==k){
-                return i;
-            }
-
-        i++;
         }
-        return -1;
+        return l+k;
     }
 };
