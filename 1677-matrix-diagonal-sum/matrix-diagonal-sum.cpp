@@ -4,9 +4,9 @@ public:
         int sum=0;
         int n=mat.size();
         for(int i=0; i<n; i++){
-            sum+= mat[i][i];
+            sum+= mat[i][i]; // 00 11  22
 
-            sum+= mat[n-1-i][i];
+            sum+= mat[i][n-1-i]; // 30 ,22 , 
         }
 
         if(n%2!= 0){
