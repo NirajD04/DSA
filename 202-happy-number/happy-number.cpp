@@ -1,28 +1,23 @@
 class Solution {
 public:
- bool isHappy(int n) {
-        unordered_set<int> visit;
-        
-        while (visit.find(n) == visit.end()) {
-            visit.insert(n);
-            n = getNextNumber(n);
+    int getnext(int n) {
+        int sum = 0;
+        while (n) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n = n / 10;
+        }
+        return sum;
+    }
+    bool isHappy(int n) {
+        set<int> visited;
+        while (visited.find(n) == visited.end()) {
+            visited.insert(n);
+            n = getnext(n);
             if (n == 1) {
                 return true;
             }
         }
-        
         return false;
-    }
-
-    int getNextNumber(int n) {
-        int output = 0;
-        
-        while (n > 0) {
-            int digit = n % 10;
-            output += digit * digit;
-            n = n / 10;
-        }
-        
-        return output;
     }
 };
