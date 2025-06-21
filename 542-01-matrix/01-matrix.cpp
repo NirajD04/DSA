@@ -1,52 +1,44 @@
 class Solution {
-public:
-    vector<vector<int >> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+public: 
+
+    vector<vector<int>> direction{{1,0}, {0,1}, {-1,0},{0,-1}};
 
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
-        int m = mat.size();
-        int n = mat[0].size();
+        int m=mat.size();
+        int n=mat[0].size();
 
+        vector<vector<int>> dist(m,vector<int>(n,INT_MAX));
 
-        vector<vector<int>> dist(m , vector<int>(n, INT_MAX));  // infinty se intialise kardiya
-
-        queue<pair<int, int>> q;
-
-        // Initialize the queue with all 0s and set their distance to 0
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-
-                if (mat[i][j] == 0) {
-                    dist[i][j] = 0;
-                    
-                    q.push({i, j});     // multiple bfs 
+        queue<pair<int,int>> q;
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(mat[i][j]==0){
+                    dist[i][j]=0;
+                    q.push({i,j});
                 }
             }
         }
 
-      
-        while (!q.empty()) {
-
-            int x = q.front().first;
-            int y=q.front().second;
+        while(!q.empty()){
+            int i=q.front().first;
+            int j=q.front().second;
 
             q.pop();
 
-            for (auto dir: directions) {
-                int nx = x + dir[0];
-                int ny = y + dir[1];
+            for(auto dir: direction){
+                int ni=i+dir[0];
+                int nj=j+dir[1];
 
-                // If neighbor is within bounds and has a greater distance, update it
+                if(ni>=0 && ni<m && nj>=0 && nj<n && dist[ni][nj]>dist[i][j]+1){
 
-                if (nx >= 0 && nx < m && ny >= 0 && ny < n && dist[nx][ny] > dist[x][y] + 1) {
 
-                    dist[nx][ny] = dist[x][y] + 1;
-
-                    q.push({nx, ny});
-
+                    dist[ni][nj]=dist[i][j]+1;
+                    q.push({ni,nj});
                 }
             }
         }
 
         return dist;
+
     }
 };
