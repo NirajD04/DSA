@@ -1,6 +1,7 @@
 class Solution {
 public:
     int findKthPositive(vector<int>& arr, int k) {
+        
         map<int, bool> mp;
         
         // Mark all the elements present in arr
