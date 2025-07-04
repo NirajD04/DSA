@@ -3,8 +3,9 @@ public:
     bool isIsomorphic(string s, string t) {
         unordered_map<char, char> mp1, mp2;
 
-        for (int i = 0; i < s.length(); i++) {
-            
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
             char ch1 = s[i];
             char ch2 = t[i];
 
@@ -13,8 +14,8 @@ public:
                 return false;
             }
 
-            mp1[ch1] = ch2;
-            mp2[ch2] = ch1;
+            mp1[ch1]=ch2;
+            mp2[ch2]=ch1;
         }
         return true;
     }
