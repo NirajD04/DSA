@@ -6,10 +6,12 @@ public:
 
         int m = matrix.size();
         int n = matrix[0].size();
+
         vector<int> result;
 
         int top = 0;
         int down = m - 1;
+        
         int left = 0;
         int right = n - 1;
 
