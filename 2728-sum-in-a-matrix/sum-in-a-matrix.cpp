@@ -7,7 +7,7 @@ public:
 
         // Sort each row in descending order
         for (int i = 0; i < m; i++) {
-            sort(nums[i].begin(), nums[i].end(), greater<int>());
+            sort(nums[i].begin(), nums[i].end());
         }
 
         // For each column, find the max among all rows at that column
