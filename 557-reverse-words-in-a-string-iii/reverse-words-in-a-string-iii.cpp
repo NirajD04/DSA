@@ -2,15 +2,15 @@ class Solution {
 public:
     string reverseWords(string s) {
         stringstream ss(s);
-        
-        string word, result = "";
+        string word, ans;
 
-        while (ss >> word) {
-            reverse(word.begin(), word.end());
-            result += word + " ";
+        while(ss >> word){
+            reverse(word.begin(),word.end());
+            ans+=word+" ";
+            
         }
 
-        result.pop_back(); // remove last space
-        return result;
+        ans.pop_back();
+        return ans;
     }
 };
