@@ -23,37 +23,32 @@ class Solution {
 public:
     unordered_map<Node* , Node*> mp;
 
-    void dfs( Node* node, Node* clone_node){
+    void dfs(Node* node, Node* clone_node){
+        for(Node* otherNode : node->neighbors){
+            if(mp.find(otherNode)==mp.end()){
 
-        for(Node* other_node: node->neighbors){    // other neighbors 1->2,4 
+                Node* otherclone= new Node(otherNode->val);
 
-            if(mp.find(other_node)==mp.end()){      // check if clone is already exist or not;
+                mp[otherNode]= otherclone;
 
-                Node* other_clone= new Node(other_node->val); // clone banaya
-                
-                mp[other_node]=other_clone;   // map me push;
+                clone_node->neighbors.push_back(otherclone);
 
-                clone_node->neighbors.push_back(other_clone); // clone ke neighbors clone_node;
-
-                dfs(other_node, other_clone); // recursion;
+                dfs(otherNode, otherclone);
             }
 
             else{
-                clone_node->neighbors.push_back(mp[other_node]);
+                clone_node->neighbors.push_back(mp[otherNode]);
             }
         }
     }
     Node* cloneGraph(Node* node) {
+        if(node==NULL) return NULL;
 
-        if(!node) return NULL;
+        Node* clone_node= new Node(node->val);
 
-        Node* clone_node=new Node(node->val);  // clone bana liya
-
-        mp[node]=clone_node;  // map me orignal aur copy 
-
+        mp[node]= clone_node;
         dfs(node, clone_node);
 
-        return clone_node; // clone ko return 
-
+        return clone_node;
     }
 };
