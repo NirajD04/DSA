@@ -1,9 +1,8 @@
 class Solution {
-public:  
+public:
     int t[1000];
+    
     int solve(int n) {
-
-      
 
         if (n < 0) {
             return 0;
@@ -21,8 +20,8 @@ public:
 
         return t[n] = onestep + twostep;
     }
-    int climbStairs(int n) { 
-        memset(t,-1, sizeof(t));
-        return solve(n); 
-        }
+    int climbStairs(int n) {
+        memset(t, -1, sizeof(t));
+        return solve(n);
+    }
 };
