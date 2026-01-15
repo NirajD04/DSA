@@ -1,23 +1,22 @@
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-       int n = nums.size();
+        
+        int n=nums.size();
 
+        int even=0;
+        int odd= 1;
         vector<int> result(n);
+        for(int i=0; i< n;i++){
+            
+            if(nums[i]>0){
+                result[even]=nums[i];
+                even+=2;
 
-
-        int posIndex = 0, negIndex = 1;
-
-        // Distribute numbers alternately into the result array
-        for (int num : nums) {
-            if (num > 0) {
-
-                result[posIndex] = num;
-                posIndex += 2;
-                
-            } else {
-                result[negIndex] = num;
-                negIndex += 2;
+            }
+            else{
+                result[odd]= nums[i];
+                odd+=2;
             }
         }
 
