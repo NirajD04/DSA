@@ -19,17 +19,22 @@ public:
         ListNode* fast = head;
 
         while (fast != nullptr && fast->next != nullptr) {
+
             slow = slow->next;
             fast = fast->next->next;
+            
             if (slow == fast) {
                 break;
             }
         }
+
+        
         if (slow != fast) {
             return NULL;
         }
 
         ListNode* prev = head;
+        
         while (prev != slow) {
             slow = slow->next;
             prev = prev->next;
